@@ -9,21 +9,24 @@ public class EasyLoaderTest {
   @Test
   public void canLoadClassFromSingleJar() throws Exception {
     EasyLoader loader = new EasyLoader(new File("./src/test/resources/jaxen-1.1.3.jar"));
-    ClassLoader classLoader = loader.getClassLoader();
-    classLoader.loadClass("org.jaxen.BaseXPath");
+    loader.loadClass("org.jaxen.BaseXPath");
   }
 
   @Test
   public void canLoadClassFromJarInFolder() throws Exception {
     EasyLoader loader = new EasyLoader(new File("./src/test/resources/"));
-    ClassLoader classLoader = loader.getClassLoader();
-    classLoader.loadClass("org.jaxen.BaseXPath");
+    loader.loadClass("org.jaxen.BaseXPath");
   }
 
   @Test
   public void canLoadClassFromAnyJarInFolder() throws Exception {
     EasyLoader loader = new EasyLoader(new File("./src/test/resources/"));
-    ClassLoader classLoader = loader.getClassLoader();
-    classLoader.loadClass("net.disy.commons.core.util.ArrayUtilities");
+    loader.loadClass("net.disy.commons.core.util.ArrayUtilities");
+  }
+
+  @Test
+  public void canLoadSystemClasses() throws Exception {
+    EasyLoader loader = new EasyLoader(new File("./src/test/resources/"));
+    loader.loadClass("java.lang.Math");
   }
 }
