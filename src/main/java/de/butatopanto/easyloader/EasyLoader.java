@@ -14,6 +14,9 @@ public class EasyLoader {
   }
 
   private URL[] getURLs(File file) throws MalformedURLException {
+    if (file.isDirectory()) {
+      return new URL[]{file.listFiles()[0].toURI().toURL()};
+    }
     return new URL[]{file.toURI().toURL()};
   }
 

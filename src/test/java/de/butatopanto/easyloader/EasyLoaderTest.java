@@ -12,4 +12,11 @@ public class EasyLoaderTest {
     ClassLoader classLoader = loader.getClassLoader();
     classLoader.loadClass("org.jaxen.BaseXPath");
   }
+
+  @Test
+  public void canLoadClassFromJarInFolder() throws Exception {
+    EasyLoader loader = new EasyLoader(new File("./src/test/resources/"));
+    ClassLoader classLoader = loader.getClassLoader();
+    classLoader.loadClass("org.jaxen.BaseXPath");
+  }
 }
