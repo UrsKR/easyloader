@@ -7,4 +7,6 @@ repositories {
 
 dependencies {
   compile 'com.google.guava:guava:10.0.1'
+  compile 'de.devsurf.injection.guice:de.devsurf.injection.guice.core:0.8.7'
+  compile 'de.devsurf.injection.guice.scanner:de.devsurf.injection.guice.scanner.reflections:0.8.7'
 }
