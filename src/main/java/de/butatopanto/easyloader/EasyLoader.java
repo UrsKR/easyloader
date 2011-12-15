@@ -4,6 +4,11 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import static com.google.common.collect.Collections2.transform;
+import static com.google.common.collect.Lists.newArrayList;
 
 public class EasyLoader {
 
@@ -15,7 +20,9 @@ public class EasyLoader {
 
   private URL[] getURLs(File file) throws MalformedURLException {
     if (file.isDirectory()) {
-      return new URL[]{file.listFiles()[0].toURI().toURL()};
+      ArrayList<File> files = newArrayList(file.listFiles());
+      Collection<URL> urls = transform(files, new ToURLs());
+      return urls.toArray(new URL[urls.size()]);
     }
     return new URL[]{file.toURI().toURL()};
   }

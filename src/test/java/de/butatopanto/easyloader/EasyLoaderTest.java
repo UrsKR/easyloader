@@ -19,4 +19,11 @@ public class EasyLoaderTest {
     ClassLoader classLoader = loader.getClassLoader();
     classLoader.loadClass("org.jaxen.BaseXPath");
   }
+
+  @Test
+  public void canLoadClassFromAnyJarInFolder() throws Exception {
+    EasyLoader loader = new EasyLoader(new File("./src/test/resources/"));
+    ClassLoader classLoader = loader.getClassLoader();
+    classLoader.loadClass("net.disy.commons.core.util.ArrayUtilities");
+  }
 }
