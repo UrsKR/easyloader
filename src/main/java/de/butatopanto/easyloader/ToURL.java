@@ -7,7 +7,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class ToURLs implements Function<File, URL> {
+public class ToURL implements Function<File, URL> {
 
   public URL apply(@Nullable File input) {
     try {

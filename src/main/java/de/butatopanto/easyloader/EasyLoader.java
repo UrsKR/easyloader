@@ -15,16 +15,24 @@ public class EasyLoader {
   private ClassLoader classLoader = new URLClassLoader(new URL[0]);
 
   public EasyLoader(File file) throws MalformedURLException {
-    classLoader = new URLClassLoader(getURLs(file), getClass().getClassLoader());
+    classLoader = new URLClassLoader(getURLs(file));
   }
 
   private URL[] getURLs(File file) throws MalformedURLException {
     if (file.isDirectory()) {
-      ArrayList<File> files = newArrayList(file.listFiles());
-      Collection<URL> urls = transform(files, new ToURLs());
-      return urls.toArray(new URL[urls.size()]);
+      return allJarFilesInDirectory(file);
     }
-    return new URL[]{file.toURI().toURL()};
+    return singleFile(file);
+  }
+
+  private URL[] allJarFilesInDirectory(File folder) {
+    ArrayList<File> files = newArrayList(folder.listFiles());
+    Collection<URL> urls = transform(files, new ToURL());
+    return urls.toArray(new URL[urls.size()]);
+  }
+
+  private URL[] singleFile(File file) throws MalformedURLException {
+    return new URL[]{new ToURL().apply(file)};
   }
 
   public ClassLoader getClassLoader() {
