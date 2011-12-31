@@ -17,17 +17,10 @@ public class ExampleApp {
 
   public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
     EasyLoader loader = new EasyLoader(new File("./src/test/resources/test.jar"));
-    Runnable runnable = new Runnable() {
-      @Override
-      public void run() {
-        StartupModule startupModule = StartupModule.create(ReflectionsScanner.class, PackageFilter.create("de.test"));
-        Injector injector = createInjector(startupModule);
-        Example instance = injector.getInstance(Example.class);
-        System.out.println(instance.sayHello());
-      }
-    };
-    Thread thread = new Thread(runnable);
-    thread.setContextClassLoader(loader);
-    thread.start();
+    Thread.currentThread().setContextClassLoader(loader);
+    StartupModule startupModule = StartupModule.create(ReflectionsScanner.class, PackageFilter.create("de.test"));
+    Injector injector = createInjector(startupModule);
+    Example instance = injector.getInstance(Example.class);
+    System.out.println(instance.sayHello());
   }
 }
