@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+	compile 'com.google.guava:guava:10.0.1'
+	compile 'com.google.inject:guice:3.0'
+	compile 'com.google.inject.extensions:guice-multibindings:3.0'
+	compile 'com.googlecode.rocoto:rocoto:4.0'
+	compile files("../easyloader/de.devsurf.injection.guice.core-0.8.8-SNAPSHOT.jar")
+    compile project(':easyloader')
+	testCompile 'junit:junit:4+'
+
+}
+
+

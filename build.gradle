@@ -1,24 +1,4 @@
-apply plugin: 'java'
 apply plugin: 'idea'
-
-repositories {
-  mavenCentral()
-}
-
-dependencies {
-  compile 'com.google.guava:guava:10.0.1'
-  //compile 'de.devsurf.injection.guice:de.devsurf.injection.guice.core:0.8.7'
-  compile 'org.reflections:reflections:0.9.5-RC2'
-  compile 'com.google.inject:guice:3.0'
-  compile 'com.google.inject.extensions:guice-multibindings:3.0'
-  compile 'com.googlecode.rocoto:rocoto:4.0'
-  compile files("de.devsurf.injection.guice.scanner.reflections-0.8.8-SNAPSHOT.jar")
-  compile files("de.devsurf.injection.guice.core-0.8.8-SNAPSHOT.jar")
-  //compile 'de.devsurf.injection.guice.scanner:de.devsurf.injection.guice.scanner.reflections:0.8.7'
-  //compile 'de.devsurf.injection.guice.scanner:de.devsurf.injection.guice.scanner.asm:0.8.7'
-  //compile 'de.devsurf.injection.guice.scanner:de.devsurf.injection.guice.scanner.sonatype:0.8.7'
-  testCompile 'junit:junit:4+'
-}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.0-milestone-6'
