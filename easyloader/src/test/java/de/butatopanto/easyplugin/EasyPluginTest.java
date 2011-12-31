@@ -9,8 +9,10 @@ public class EasyPluginTest {
 
   @Test
   public void findsImplementationOfApplicationInTestmodule() throws Exception {
-    EasyLoader loader = new EasyLoader(new File("./src/test/resources/testmodule.jar"));
-    EasyPlugin easyPlugin = new EasyPlugin(loader, "de.butatopanto.test");
+    String libraryAndModuleFolder = "./src/test/resources/";
+    String modulePackage = "de.butatopanto.test";
+    EasyLoader loader = new EasyLoader(new File(libraryAndModuleFolder));
+    EasyPlugin easyPlugin = new EasyPlugin(loader, modulePackage);
     easyPlugin.startApplication();
   }
 }
